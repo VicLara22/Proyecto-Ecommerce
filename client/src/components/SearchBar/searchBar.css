@@ -1,0 +1,31 @@
+.container-search{
+    overflow: hidden;
+    vertical-align: middle;
+    white-space: nowrap;
+    margin-left: 280px;
+}
+.input-search{
+    width: 400px;
+    height: 35px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background: #ffffff;
+    border: none;
+    outline: none;
+}
+.button-search{
+    width: 99px;
+    height: 35px;
+    background: #D9D9D9;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: none;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.container-search .button-search{
+    outline:  none;
+    opacity: 2;
+    margin-left: -50px;
+}

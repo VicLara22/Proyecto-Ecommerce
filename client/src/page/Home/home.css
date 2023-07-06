@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container-p{
+    margin-top: 120px;
+    margin-bottom: 150px;
+}
+.p-1{
+    font-size: 38px;
+    color:#E3CD96;
+}
+.p-2{
+    margin-top: -20px;
+    font-size: 38px;
+    color:#8a8a8a3d;
+}

@@ -1,0 +1,47 @@
+[
+    {
+ 
+      "name": "remera Zara",
+   
+      "price": 15000,
+      "stock": 10,
+      "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
+      "state":true,
+      "image": "https://img.freepik.com/vector-premium/arte-ilustracion-deporte-icono-logotipo-diseno-logotipo-balon-simbolo-conjunto-futbol-futbol-efecto_678437-163.jpg?w=2000",
+      "size": ["1", "2", "3"],
+      "colors": ["negro", "blanco"]
+    },
+    {
+        "id": "2",
+        "name": "pantalon Lara",
+        "category": "pantalon",
+        "price": "15.000",
+        "stock": "10",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
+        "image": "https://img.freepik.com/vector-premium/arte-ilustracion-deporte-icono-logotipo-diseno-logotipo-balon-simbolo-conjunto-futbol-futbol-efecto_678437-163.jpg?w=2000",
+        "sizes": ["1", "2", "3"],
+        "colors": ["negro", "blanco"]
+    },
+    {
+        "id": "3",
+        "name": "Vestido Carla",
+        "category": "vestido",
+        "price": "15.000",
+        "stock": "10",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
+        "image": "https://img.freepik.com/vector-premium/arte-ilustracion-deporte-icono-logotipo-diseno-logotipo-balon-simbolo-conjunto-futbol-futbol-efecto_678437-163.jpg?w=2000",
+        "sizes": ["1", "2", "3"],
+        "colors": ["negro", "blanco"]
+    },
+    {
+        "id": "4",
+        "name": "Cartera de Cuero",
+        "category": "Bolsos",
+        "price": "15.000",
+        "stock": "10",
+        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
+        "image": "https://img.freepik.com/vector-premium/arte-ilustracion-deporte-icono-logotipo-diseno-logotipo-balon-simbolo-conjunto-futbol-futbol-efecto_678437-163.jpg?w=2000",
+        "sizes": ["1", "2", "3"],
+        "colors": ["negro", "blanco"]
+    }
+  ]
