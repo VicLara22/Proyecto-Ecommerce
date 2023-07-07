@@ -1,9 +1,10 @@
 const { Router } = require("express");
-const { getAllPorductsRouter, getProductByIdRouter, addProductRouter, updateProductRouter, productDeleteRouter } = require("./productRouter");
+const { getAllProductsRouter,getAllProductsNameRouter,  getProductByIdRouter, addProductRouter, updateProductRouter, productDeleteRouter } = require("./productRouter");
 
 const router = Router();
 
-router.get('/', getAllPorductsRouter);
+router.get('/', getAllProductsRouter);
+router.get('/:name', getAllProductsNameRouter);
 router.get('/:id', getProductByIdRouter);
 router.post('/', addProductRouter);
 router.put('/:id', updateProductRouter);

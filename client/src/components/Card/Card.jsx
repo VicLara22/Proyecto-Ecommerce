@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const Card = ({ img, title, id }) => {
+export const Card = ({ image, title, id, price }) => {
     return (
-        <div>
+        <div key={id}>
             <div>
-                <img src={img} alt='image producto' />
+                <img src={image} alt='image producto' />
             </div>
             <div>
                 <h3>{title}</h3>
-                <Link to={`/home/products/${id}`}> 
+                <h3>{price}</h3>
+                <Link to={`/products/${id}`}> 
                 <p>Saber más</p>
                 </Link>
             </div>

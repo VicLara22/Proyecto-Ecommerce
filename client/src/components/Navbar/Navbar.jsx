@@ -15,7 +15,7 @@ export const NavBar = () => {
                 <SearchBar />
             </div>
             <div className="container-enlaces">
-                <Link to='/home' >
+                <Link to='/' >
                     <li>Inicio </li>
                 </Link >
                 <Link to='/products'>

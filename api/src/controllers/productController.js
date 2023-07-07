@@ -1,7 +1,7 @@
 const { Op } = require("sequelize");
 const { Product, Category } = require("../db");
 
-const getAllPorducts = async () => {
+const getAllProducts = async () => {
     const allProduct = await Product.findAll({
         include: [
             {
@@ -42,21 +42,19 @@ const productCreate = async (name, price, stock, description, state, image, size
 }
 
 const productUpdate = async (id, name, price, stock, description, state, image, size, colors) => {
-    const product = await Product.findOne(id);
+    const product = await Product.findByPk(id);
     const updateProduct = await product.update({
-        name: name, price: price, stock: stock, description: description, state: state, image, size: size, colors: colors
+        name, price, stock, description, state, image, size, colors
     });
     return updateProduct;
 }
 
 
 const productDelete = async (id) => {
-    const product = await Product.findByPk(id);
-    const deleteProduct = await Product.destroy({
+    await Product.destroy({
         where: { id: id }
     })
-    return deleteProduct;
 }
 
 
-module.exports = { getAllPorducts, getProductsByName, getProductById, productUpdate, productCreate, productDelete };
+module.exports = { getAllProducts, getProductsByName, getProductById, productUpdate, productCreate, productDelete };

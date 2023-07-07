@@ -33,4 +33,4 @@ export const GET_BY_PRICE = "GET_BY_PRICE";
 
 //----------------------SIZE----------------------------
 
-export const GET_BY_SIZES = "GET_BY_SIZE";
+export const GET_BY_SIZE = "GET_BY_SIZE";
