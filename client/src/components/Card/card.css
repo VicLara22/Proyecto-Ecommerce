@@ -1,0 +1,78 @@
+.container-card {
+    width: 300px;
+    height: 500px;
+    background: #D9D9D9;
+    display: inline-flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 40px;
+}
+
+.container-img-card {
+    width: 300px;
+    height: 360px;
+    display: flex;
+    align-items: center;
+}
+
+.container-img-card img {
+    width: 300px;
+    height: 400px;
+}
+
+.container-detail-card {
+    width: 300px;
+    height: 50px;
+    display: inline-flex;
+    justify-content:space-between;
+    padding: 10px;
+    margin-bottom: -30px;
+}
+
+.container-detail-card h3 {
+    color: black;
+    font-size: 25px;
+}
+
+.container-detail-card h2 {
+    color: black;
+    font-size: 20px;
+}
+.container-heart{
+    width: 300px;
+    height: 50px;
+    display: inline-flex;
+    justify-content:space-between;
+    padding: 10px;
+    margin-bottom: -20px;
+} 
+.container-heart h2{
+    color: black;
+    font-size: 20px;
+}
+
+.container-heart i{
+    color: red;
+    cursor:pointer;
+}
+.container-heart i:hover{
+    transition: 0.25s all ease;
+    font-size: 30px;
+}
+
+.container-button-card button {
+    cursor: pointer;
+    width: 250px;
+    height: 35px;
+    border-radius: 50px;
+    color: #E3CD96;
+    font-size: 20px;
+    background: #4D4747;
+    border:#4D4747 solid 1px;
+ 
+}
+.container-button-card button:hover {
+    background-color: #E3CD96;
+    color: #4D4747;
+    transition: 0.25s all ease;
+}
