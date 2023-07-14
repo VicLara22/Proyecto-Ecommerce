@@ -5,7 +5,7 @@ import { Footer } from "../../components/Footer/Footer";
 import { Card } from "../../components/Card/Card";
 import { getAllProducts } from "../../redux/action";
 import { Filter } from "../../components/Filter/Filter";
-
+import './products.css'
 export const Products = () => {
     const allProducts = useSelector((state) => state.products);
 console.log(allProducts,'aca')
@@ -39,7 +39,7 @@ console.log(allProducts,'aca')
                         />
                     )) 
                 ) :
-                    (<p>Cargando Productos</p>)
+                    (<p>No se encontraron Productos</p>)
             }
             </div>
             <div> 

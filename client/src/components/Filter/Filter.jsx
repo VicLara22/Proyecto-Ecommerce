@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllCategory, getAllColor, getAllPrice, getAllSize, getByCategory, getByColor, getByPrice, getBySizes } from "../../redux/action";
+import { getAllCategory, getAllColor, getAllPrice, getAllProducts, getAllSize, getByCategory, getByColor, getByPrice, getBySizes } from "../../redux/action";
+import './filter.css'
 
 export const Filter = () => {
 
@@ -37,6 +38,11 @@ export const Filter = () => {
         setSelectedColor(e.target.value);
     };
 
+    const handleClick =(e) =>  {
+        e.preventDefault();
+        dispatch(getAllProducts());
+      }
+
 
 
     const handleSubmit = (e) => {
@@ -57,7 +63,7 @@ export const Filter = () => {
 
 
     return (
-        <div>
+        <div className="container-filter">
             <form onSubmit={handleSubmit}>
                 <label>
                     Precio:
@@ -109,7 +115,8 @@ export const Filter = () => {
                         <option value='Rojo'>Rojo</option>
                     </select>
                 </label>
-                <button type="submit">Filtrar</button>
+                <button className="button-filter" type="submit">Filtrar</button>
+                <button className="button-filter" onClick={(e) => {handleClick(e)}}>Resetear</button>
             </form>
         </div>
     )

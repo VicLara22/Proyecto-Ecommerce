@@ -8,6 +8,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   max-width: auto;
   overflow: hidden;
+  background: #f0f0f0;
+  max-height: 800px;
+  overflow-y: scroll;
 }
 
 code {
