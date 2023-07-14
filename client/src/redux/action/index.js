@@ -11,7 +11,7 @@ export const getAllProducts = () => {
             return dispatch({
                 type: actions.GET_ALL_PRODUCTS,
                 payload: products.data
-              
+
             });
         } catch (error) {
             console.log(error);
@@ -22,10 +22,10 @@ export const getAllProducts = () => {
 export const getProductsByName = (name) => {
     return async function (dispatch) {
         try {
-            const name = await axios.get(`${baseURL}/products/${name}`);
+            const response = await axios.get(`${baseURL}/products/${name}`);
             dispatch({
                 type: actions.GET_BY_NAME,
-                payload: name.data
+                payload: response.data
             });
         } catch (error) {
             console.log(error);
@@ -64,7 +64,7 @@ export const modifyProduct = (data) => {
 export const deleteProduct = (id) => {
     return async function (dispatch) {
         try {
-             await axios.delete(`${baseURL}/products/${id}`);
+            await axios.delete(`${baseURL}/products/${id}`);
             dispatch({
                 type: actions.DELETE_PRODUCT,
                 payload: id
@@ -136,7 +136,7 @@ export const modifyCategory = (data) => {
 export const deleteCategory = (id) => {
     return async function (dispatch) {
         try {
-             await axios.delete(`${baseURL}/category/${id}`);
+            await axios.delete(`${baseURL}/category/${id}`);
             dispatch({
                 type: actions.DELETE_CATEGORY,
                 payload: id
@@ -150,10 +150,14 @@ export const deleteCategory = (id) => {
 export const getByCategory = (category) => {
     return async function (dispatch) {
         try {
-            const categoty = await axios.get(`${baseURL}/filters/${category}`);
+            const response = await axios.get(`${baseURL}/filter/categories/`, {
+                params: {
+                    categories: category,
+                }
+            });
             dispatch({
                 type: actions.GET_BY_CATEGORY,
-                payload: category.data
+                payload: response.data
             });
         } catch (error) {
             console.log(error);
@@ -222,7 +226,11 @@ export const deleteColor = (id) => {
 export const getByColor = (color) => {
     return async function (dispatch) {
         try {
-            const byColor = await axios.get(`${baseURL}/filter/${color}`);
+            const byColor = await axios.get(`${baseURL}/filter/color`, {
+                params: {
+                    color: color,
+                }
+            });
             dispatch({
                 type: actions.GET_BY_COLOR,
                 payload: byColor.data
@@ -245,7 +253,11 @@ export const filter = (payload) => ({
 export const getByPrice = (price) => {
     return async function (dispatch) {
         try {
-            const byPrice = await axios.get(`${baseURL}/filter/${price}`);
+            const byPrice = await axios.get(`${baseURL}/filter/price`, {
+                params: {
+                    price: price,
+                }
+            });
             dispatch({
                 type: actions.GET_BY_PRICE,
                 payload: byPrice.data
@@ -256,12 +268,31 @@ export const getByPrice = (price) => {
     };
 };
 
-//--------------------SIZE---------------------------
-
-export const getBySizes = (size) => {
+export const getAllPrice = () => {
     return async function (dispatch) {
         try {
-            const bySizes = await axios.get(`${baseURL}/filter/${size}`);
+            const price = await axios.get(`${baseURL}/price`);
+            dispatch({
+                type: actions.GET_ALL_PRICE,
+                payload: price.data
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+
+
+//--------------------SIZE---------------------------
+
+export const getBySizes = (sizes) => {
+    return async function (dispatch) {
+        try {
+            const bySizes = await axios.get(`${baseURL}/filter/sizes`, {
+                params: {
+                    sizes: sizes,
+                }
+            });
             dispatch({
                 type: actions.GET_BY_SIZE,
                 payload: bySizes.data
@@ -271,5 +302,64 @@ export const getBySizes = (size) => {
         }
     };
 };
+
+
+
+export const getAllSize = () => {
+    return async function (dispatch) {
+        try {
+            const size = await axios.get(`${baseURL}/size`);
+            dispatch({
+                type: actions.GET_ALL_SIZE,
+                payload: size.data
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+
+export const addSize = (data) => {
+    return async function (dispatch) {
+        try {
+            const addS = await axios.post(`${baseURL}/size`, data);
+            dispatch({
+                type: actions.ADD_SIZE,
+                payload: addS.data
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+
+export const modifySize= (data) => {
+    return async function (dispatch) {
+        try {
+            const modify = await axios.put(`${baseURL}/size`, data);
+            dispatch({
+                type: actions.MODIFY_SIZE,
+                payload: modify.data
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+
+export const deleteSize = (id) => {
+    return async function (dispatch) {
+        try {
+            await axios.delete(`${baseURL}/size/${id}`);
+            dispatch({
+                type: actions.DELETE_SIZE,
+                payload: id
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
+
 
 

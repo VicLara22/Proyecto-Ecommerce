@@ -29,8 +29,14 @@ export const FILTERS = "FILTERS";
 
 //---------------------PRICE----------------------------
 
+
 export const GET_BY_PRICE = "GET_BY_PRICE";
+export const GET_ALL_PRICE = "GET_ALL_PRICE";
 
 //----------------------SIZE----------------------------
 
+export const GET_ALL_SIZE = "GET_ALL_SIZE";
+export const ADD_SIZE = "ADD_SIZE";
+export const MODIFY_SIZE= "MODIFY_SIZE";
+export const DELETE_SIZE = "DELETE_SIZE";
 export const GET_BY_SIZE = "GET_BY_SIZE";

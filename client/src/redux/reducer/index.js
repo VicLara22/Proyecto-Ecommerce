@@ -2,12 +2,14 @@ import * as actions from '../actionType/actionType';
 
 const initialState = {
     products: [],
-    allProducts: [],
     search: [],
-    detail: {},
-    category: {},
-    color: {},
-};
+    detail: [],
+    category: [],
+    color: [],
+    sizes: [],
+    price: [],
+}
+
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -15,7 +17,6 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 products: action.payload,
-                allProducts: action.payload,
             };
         case actions.GET_BY_NAME:
             return {
@@ -50,7 +51,7 @@ const rootReducer = (state = initialState, action) => {
         case actions.ADD_CATEGORY:
             return {
                 ...state,
-                category: action.payload,
+                category: [...state.category, action.payload],
             };
         case actions.MODIFY_CATEGORY:
             return {
@@ -62,6 +63,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 category: {},
             };
+
         case actions.GET_ALL_COLOR:
             return {
                 ...state,
@@ -70,7 +72,7 @@ const rootReducer = (state = initialState, action) => {
         case actions.ADD_COLOR:
             return {
                 ...state,
-                color: action.payload,
+                color: [...state.color, action.payload],
             }
         case actions.MODIFY_COLOR:
             return {
@@ -82,13 +84,60 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 color: {},
             }
+        case actions.GET_ALL_SIZE:
+            return {
+                ...state,
+                sizes: action.payload,
+            }
+        case actions.ADD_SIZE:
+            return {
+                ...state,
+                sizes: [...state.sizes, action.payload],
+            }
+        case actions.MODIFY_SIZE:
+            return {
+                ...state,
+                sizes: action.payload,
+            }
+        case actions.DELETE_SIZE:
+            return {
+                ...state,
+                sizes: {},
+            }
+            case actions.GET_ALL_PRICE:
+                return {
+                    ...state,
+                    price: action.payload,
+                }
+        case actions.GET_BY_CATEGORY:
+            return {
+                ...state,
+                products: action.payload,
+            }
+        case actions.GET_BY_SIZE:
+            return {
+                ...state,
+                products: action.payload,
+            }
+        case actions.GET_BY_COLOR:
+            return {
+                ...state,
+                products: action.payload,
+            }
+        case actions.GET_BY_PRICE:
+            return {
+                ...state,
+                products: action.payload,
+            }
         case actions.FILTERS:
             return {
                 ...state,
                 products: action.payload,
             }
         default:
-            return state;
+            return {
+                ...state,
+            };
     }
 };
 

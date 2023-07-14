@@ -1,16 +1,17 @@
 const { Router } = require("express");
 
-const filterByCategoryRouter = require("../filters/filterByCategory");
-const filterByColorRouter = require("../filters/filterByColor");
-const filterByPriceRouter = require("../filters/filterByPrice");
-const filterBySizeRouter = require("../filters/filterBySize");
+const filterByCategory = require("../filters/filterByCategory");
+const filterByColor = require("../filters/filterByColor");
+const filterByPrice = require("../filters/filterByPrice");
+const filterBySize = require("../filters/filterBySize");
+
 const router = Router();
 
 
-router.get('/', filterByCategoryRouter);
-router.get('/', filterByColorRouter);
-router.get('/', filterByPriceRouter);
-router.get('/', filterBySizeRouter);
+router.get('/categories', filterByCategory);
+router.get('/color', filterByColor);
+router.get('/price', filterByPrice);
+router.get('/sizes', filterBySize);
 
 
 module.exports = router;

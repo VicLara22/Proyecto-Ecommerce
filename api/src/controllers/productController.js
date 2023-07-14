@@ -1,12 +1,20 @@
 const { Op } = require("sequelize");
-const { Product, Category } = require("../db");
+const { Product, Category, Color, Size } = require("../db");
 
 const getAllProducts = async () => {
     const allProduct = await Product.findAll({
         include: [
             {
                 model: Category,
-                atributes: ["name"],
+                attributes: ["name"],
+            },
+            {
+                model: Color,
+                attributes: ["name"]
+            },
+            {
+                model: Size,
+                attributes: ["name"]
             }
         ]
     })

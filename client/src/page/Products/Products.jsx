@@ -4,10 +4,11 @@ import { NavBar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
 import { Card } from "../../components/Card/Card";
 import { getAllProducts } from "../../redux/action";
+import { Filter } from "../../components/Filter/Filter";
 
 export const Products = () => {
     const allProducts = useSelector((state) => state.products);
-    console.log(allProducts[0])
+console.log(allProducts,'aca')
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -19,26 +20,32 @@ export const Products = () => {
             <div>
                 <NavBar />
             </div>
+            <div>
+                <Filter/>
+            </div>
             <div> 
             {
                 allProducts.length ? (
-                    allProducts.map((product) => (
+                    allProducts.map((p) => (
                         <Card
-                            key={product.id}
-                            id={product.id}
-                            image={product.image}
-                            title={product.name}
-                            price={product.price}
-                            category={product.categories[0].name}
+                            key={p.id}
+                            id={p.id}
+                            img={p.image}
+                            title={p.name}
+                            price={p.price}
+                            size={p.sizes[0].name}
+                            category={p.categories[0].name}
+                            
                         />
-                    ))
+                    )) 
                 ) :
                     (<p>Cargando Productos</p>)
             }
             </div>
-            <div>
+            <div> 
                 <Footer />
             </div>
         </div>
     )
 };
+

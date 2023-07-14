@@ -2,14 +2,12 @@ const { Color } = require("../db");
 
 const getAllColor = async () => {
     const allColor = await Color.findAll()
-    return allColor
+    return allColor;
 }
-
 
 const colorCreate = async (name) => {
     const newColor = await Color.create({ name })
     return newColor;
-
 }
 
 const colorUpdate = async (id, name) => {
@@ -19,7 +17,6 @@ const colorUpdate = async (id, name) => {
     });
     return updateColor;
 }
-
 
 const colorDelete = async (id) => {
     const color = await Color.findByPk(id);

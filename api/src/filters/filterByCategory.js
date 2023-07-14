@@ -1,8 +1,8 @@
-const { Category, Product, Color } = require('../db');
-
+const { Category, Product, Size, Color } = require('../db');
 
 const filterByCategoryRouter = async (req, res) => {
     const { categories } = req.query;
+  
     try {
         const category = await Category.findOne({
             where: {
@@ -21,7 +21,15 @@ const filterByCategoryRouter = async (req, res) => {
                         name: categories,
                     },
                     attributes: ['name']
-                }
+                },
+                {
+                    model: Size,
+                    attributes: ['name']
+                },
+                {
+                    model: Color,
+                    attributes: ['name']
+                },
             ]
         });
         res.status(200).send(products)

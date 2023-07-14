@@ -51,9 +51,10 @@ const getProductByIdRouter = async (req, res, next) => {
 const addProductRouter = async (req, res, next) => {
     const { name, price, stock, description, state, image, size, category, color } = req.body;
     try {
-        const newProduct = await productCreate(name, price, stock, description, state, image, size);
+        const newProduct = await productCreate(name, price, stock, description, state, image);
        await newProduct.addCategory(category);
        await newProduct.addColor(color);
+       await newProduct.addSize(size);
         res.status(201).send('Creado con exito')
     } catch (error) {
         res.status(400).send(error);
@@ -63,9 +64,10 @@ const addProductRouter = async (req, res, next) => {
 const updateProductRouter = async (req, res, next) => {
     const { id, name, price, stock, description, state, image, size, category, color } = req.body;
     try {
-        const update = await productUpdate(id, name, price, stock, description, state, image, size);
+        const update = await productUpdate(id, name, price, stock, description, state, image);
         await update.addCategories(category);
         await update.addColors(color);
+        await update.addSize(size);
         res.status(201).json(update);
 
     } catch (error) {

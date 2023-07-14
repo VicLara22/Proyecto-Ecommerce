@@ -34,10 +34,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false, 
     },
-    size:{
-      type:DataTypes.INTEGER,
-      allowNull: false,
-    },
   },
   {
     timestamps: false, 

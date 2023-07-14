@@ -6,7 +6,7 @@ import img1 from '../../assets/carrusel1.jpg'
 
 export const Carrousel = () => {
     //creamos un array con las imagenes
-    const images = [
+    const img = [
         img1,
         img2,
         img3
@@ -16,14 +16,14 @@ export const Carrousel = () => {
 
     const next = () => {
         //el nuevo valor del carrusel se calcula tomadndo el indeice anterior y sumandole . Utilizamos el operador % ppra asegurarnos que el indice quede en el rango validos de indices de las imagenes. 
-        setCurrentIndex(prevIndex => (prevIndex + 1) % images.length)
+        setCurrentIndex(prevIndex => (prevIndex + 1) % img.length)
     }
     const prev = () => {
       
         setCurrentIndex(prevIndex => {
               // si el indice esta en 0 mostrara la ultima imagen de array 
             if (prevIndex === 0) {
-                return images.length - 1;
+                return img.length - 1;
                 //de lo contario restamos 1 al indice actual
             } else {
                 return prevIndex - 1;
@@ -35,7 +35,7 @@ export const Carrousel = () => {
         <div className="container-principal">
             <div className="containerSlide">
                 <div className="slide">
-                    <img src={images[currentIndex]} alt="image carrusel" />
+                    <img src={img[currentIndex]} alt="img carrusel" />
                 </div>
                 <div className="controlers">
                     <button className="button-right" onClick={next}><i class="fa-sharp fa-solid fa-angle-right"></i></button>
