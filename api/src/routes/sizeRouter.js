@@ -1,9 +1,18 @@
 const { getAllSize, sizeDelete, sizeUpdate, sizeCreate } = require("../controllers/sizeContoller");
 
 const getAllSizeRouter = async (req, res, next) => {
+    const { name } = req.query;
     try {
-        const allSize = await getAllSize()
-        res.status(201).json(allSize)
+        const allSize = await getAllSize();
+        if (name) {
+            const sizeName = allSize.filter(size => size.name.toLowerCase().includes(name.toLowerCase()))
+            if (sizeName.length > 0) {
+                return res.status(201).json(sizeName);
+            } else {
+                return res.status(404).send({ message: 'El size no existe' })
+            }
+        }
+        res.status(200).json(allSize)
     } catch (error) {
         res.status(400).send(error);
         console.log(error);
@@ -32,7 +41,7 @@ const updateSizeRouter = async (req, res, next) => {
         console.log(error);
     }
 }
- 
+
 const sizeDeleteRouter = async (req, res, next) => {
     const { id } = req.params;
     try {
@@ -45,4 +54,4 @@ const sizeDeleteRouter = async (req, res, next) => {
     }
 }
 
-module.exports = {getAllSizeRouter, addSizeRouter, updateSizeRouter, sizeDeleteRouter }
+module.exports = { getAllSizeRouter, addSizeRouter, updateSizeRouter, sizeDeleteRouter }

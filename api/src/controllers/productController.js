@@ -20,28 +20,33 @@ const getAllProducts = async () => {
     })
     return allProduct;
 }
+
+const getProductById = async (id) => {
+    try{
+        const product = await Product.findByPk(id,{
+            include: [Category, Color, Size]
+        });
+        if (!product) {
+            throw new Error(`No existe producto con el id ${id}`);
+          }
+        return product;
+    } catch(error){
+        throw error
+    }
+}
+ 
 const getProductsByName = async (name) => {
     const productByName = await Product.findAll({
         where: {
             name: {
-                [Op.like]: name
+                [Op.like]: `%${name}%`
             },
-        }
+        },
+        include: [Category, Color, Size],
     })
     return productByName;
 }
-const getProductById = async (id) => {
-    const product = await Product.findOne({
-        where: { id: id },
-        include: [
-            {
-                model: Category,
-                atributes: ["name"],
-            }
-        ]
-    })
-    return product;
-}
+
 
 const productCreate = async (name, price, stock, description, state, image, size, colors) => {
     const newProduct = await Product.create({ name, price, stock, description, state, image, size, colors })
@@ -49,10 +54,12 @@ const productCreate = async (name, price, stock, description, state, image, size
 
 }
 
-const productUpdate = async (id, name, price, stock, description, state, image, size, colors) => {
+const productUpdate = async (id, name, price, stock, description, state, image, size, color, category) => {
     const product = await Product.findByPk(id);
-    const updateProduct = await product.update({
-        name, price, stock, description, state, image, size, colors
+    if(!product){
+        throw new Error('Porduct not found')
+    }
+    const updateProduct = await product.update({name, price, stock, description, state, image, size, color, category
     });
     return updateProduct;
 }

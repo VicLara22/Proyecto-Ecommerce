@@ -8,7 +8,6 @@ import { Filter } from "../../components/Filter/Filter";
 import './products.css'
 export const Products = () => {
     const allProducts = useSelector((state) => state.products);
-console.log(allProducts,'aca')
     const dispatch = useDispatch();
 
     useEffect(() => {

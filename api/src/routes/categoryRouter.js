@@ -1,8 +1,17 @@
 const { getAllCategory, categoryDelete, categoryUpdate, categoryCreate } = require("../controllers/categoryController");
 
 const getAllCategoryRouter = async (req, res, next) => {
+    const { name } = req.query;
     try {
         const allCategory = await getAllCategory()
+        if (name) {
+            const categoryName = allCategory.filter(category => category.name.toLowerCase().includes(name.toLowerCase()))
+            if (categoryName.length > 0) {
+                return res.status(201).json(categoryName);
+            } else {
+                return res.status(404).send({ message: 'La categoria no existe' })
+            }
+        }
         res.status(201).json(allCategory)
     } catch (error) {
         res.status(400).send(error);

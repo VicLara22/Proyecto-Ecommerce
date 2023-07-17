@@ -1,9 +1,18 @@
 const { getAllColor, colorCreate } = require("../controllers/colorController");
 
 const getAllColorRouter = async (req, res, next) => {
+    const {name} = req.query;
     try {
-        const allColor = await getAllColor()
-        res.status(201).json(allColor)
+        const allColor = await getAllColor();
+        if(name){
+            colorName= allColor.filter(color => color.name.toLowerCase().includes(name.toLowerCase()))
+            if(colorName.length > 0){
+                return res.status(201).json(colorName);
+            }else{
+                return res.status(404).send({message:'El color no existe'})
+            }
+        }
+        res.status(200).json(allColor)
     } catch (error) {
         res.status(400).send(error);
         console.log(error);

@@ -1,50 +1,42 @@
 const { Product, Category } = require('../db');
-const { getProductById, getProductsByName, productCreate, productDelete, productUpdate, getAllProducts } = require("../controllers/productController");
+const { getProductById, productCreate, productDelete, productUpdate, getAllProducts } = require("../controllers/productController");
 
 
 const getAllProductsRouter = async (req, res, next) => {
-    try {
-        const allProduct = await getAllProducts();
-        if (allProduct.length > 0) {
-            res.status(201).json(allProduct);
-        } else {
-            res.status(404).send({ message: 'Los productos no existe' });
-        }
-    } catch (error) {
-        res.status(400).send(error);
-        console.log(error);
-    }
-}
-const getAllProductsNameRouter = async (req, res, next) => {
     const { name } = req.query;
-
     try {
-        const allProduct = await getAllProducts();
-        const nameProduct = await getProductsByName(name);
 
-        if (!name) {
-            res.status(404).json(allProduct);
-        } else if (nameProduct.length > 0) {
-            res.status(201).json(nameProduct);
-        } else {
-            res.status(404).send({ message: 'El Nombre no existe' });
+        const allProduct = await getAllProducts();
+
+        if (name) {
+            const productsName = allProduct.filter(product => product.name.toLowerCase().includes(name.toLowerCase()))
+            if (productsName.length > 0) {
+               return res.status(201).json(productsName);
+            } else { 
+               return res.status(404).send({ message: 'El producto no existe' });
+            }
         }
-    } catch (error) {
+        res.status(200).json(allProduct)
+    } catch (error) { 
         res.status(400).send(error);
         console.log(error);
     }
 }
-
 
 
 const getProductByIdRouter = async (req, res, next) => {
     const { id } = req.params
+
     try {
         const product = await getProductById(id);
-        res.status(201).send(product);
+        if (!product) {
+            res.status(404).json({ status: 'error', message: `No existe producto con el id ${id}` });
+        } else {
+            res.status(200).json(product);
+        }
     } catch (error) {
-        res.status(400).send(error);
         console.log(error);
+        res.status(500).send('Error retrieving product');
     }
 }
 
@@ -52,9 +44,9 @@ const addProductRouter = async (req, res, next) => {
     const { name, price, stock, description, state, image, size, category, color } = req.body;
     try {
         const newProduct = await productCreate(name, price, stock, description, state, image);
-       await newProduct.addCategory(category);
-       await newProduct.addColor(color);
-       await newProduct.addSize(size);
+        await newProduct.addCategory(category);
+        await newProduct.addColor(color);
+        await newProduct.addSize(size);
         res.status(201).send('Creado con exito')
     } catch (error) {
         res.status(400).send(error);
@@ -64,7 +56,8 @@ const addProductRouter = async (req, res, next) => {
 const updateProductRouter = async (req, res, next) => {
     const { id, name, price, stock, description, state, image, size, category, color } = req.body;
     try {
-        const update = await productUpdate(id, name, price, stock, description, state, image);
+        const update =
+            await productUpdate(id, name, price, stock, description, state, image);
         await update.addCategories(category);
         await update.addColors(color);
         await update.addSize(size);
@@ -88,4 +81,4 @@ const productDeleteRouter = async (req, res, next) => {
     }
 }
 
-module.exports = { getAllProductsRouter, getAllProductsNameRouter,  getProductByIdRouter, addProductRouter, updateProductRouter, productDeleteRouter };
+module.exports = { getAllProductsRouter, getProductByIdRouter, addProductRouter, updateProductRouter, productDeleteRouter };
